@@ -6,7 +6,6 @@ Hola!! Este repositorio fue creado para gurdar mis apuntes de investigacion y es
 - Lenguajes de programacion como Python
 - Redes informaticas
 - Seguridad informatica y Hacking ético
-
-- JL =D
+- 
 
 
