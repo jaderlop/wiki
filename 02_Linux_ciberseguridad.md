@@ -6,7 +6,7 @@
 - [¿Que es el codigo abierto?](#¿Que-es-el-codigo-abierto?)
 - [¿Que es una distribucion?](#¿que-es-una-distribucion)
 -
--
+- comando borrable
 -
 -
 
