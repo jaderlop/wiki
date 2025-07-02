@@ -9,6 +9,36 @@
 - [Estructura de linux](#estructura-de-linux)
 - [Componentes del sistema de ficheros](#componentes-del-sistema-de-ficheros)
 - [Otros conceptos clave](#otros-conceptos-clave)
+- [¿Que es un comando?](#¿que-es-un-comando)
+- [Ficheros mas importantes en linux](#ficheros-mas-importantes-en-linux)
+- [Principales directorios en linux](#principales-directorios-en-linux)
+- [Variables de entorno](#variables-de-entorno)
+- [Comandos de ayuda y soporte](#comandos-de-ayuda-y-soporte)
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## ¿Que es un sistema operativo?
 
@@ -69,3 +99,90 @@ Se pueden asignar estos permisos a tres tipos de usuarios dentro del sistema.
 ***- Los permisos se asignan de forma octal o simbolica***
 
 ***- The quieter you become, the more you are able to hear*** 
+
+## ¿Que es un comando?
+Son instrucciones que es usuario envia al sistema operativo atraves de una shell, las cuales generalmente ejecutan un programa o una funcion interna, estos tambien pueden incluir argumento
+
+## Shell vs emulador de terminal
+**Emulador de terminal:** Interfaz grafiaca que permite la entrada y salida de texto, y sirve como entorno donde se ejecuta una shell
+
+**Shell:** Interprete de los comandos que el usarion envia para que el sistema opertivo las ejecute ya sea un fragmento de codigo o una funcion
+
+- sh(shell): Una de las primeras shell presente en casi todas las distribuciones.
+- bash(Bourne again shell): Ampliamente usada en GNUlinux, Permite hacer scripting avanzado
+- zsh: Shell moderna con autocompletado, resaltado y mayor interactividad
+
+El emulador de terminal el canal
+La shell es el interprete
+El sistema operativo es el ejecutor
+
+## Ficheros mas importantes en linux
+
+- **/etc/passwd** = Contiene informacion basica de los usuarios del sistema (nombre,UID[identificador de usuario], GID[Identificador de grupo])
+- **/etc/group** = Lista los grupos del sistema y los usuarios que pertenecen a ellos 
+- **/etc/shadow** = Contraseñas de los usuarios encriptadas y configuracion de expiracion 
+- **/etc/fstab** = Define como y donde montar las particiones al iniciar el sistema
+- **/etc/network/interfaces** = Configura interfaces de red de forma manual
+- **/etc/hostname** = nombre del host del sistema (nombre de la maquina)
+- **/etc/resolv.conf** = Servidores DNS para traducir los nombres de dominio en otros sistemas con Ubuntu se gestiona con Netplan
+
+## Principales directorios en linux
+
+Hay directorios ocultos y estos empiezan con ./
+
+**/boot** = Informacion necesaria para el arranque del sistema (kernel,GRUB[GNU GRand Unified Bootloader])
+**/etc** = Ficheros de configuracion del sistema y aplicaciones
+**/var** = Datos variables: logs, correos, cache, colas de imprecion, etc
+**/var/log** = Contiene los logs del sistema como syslog, auth.log, etc
+**/usr** = Contine ficheros y directorios de uso general para los usuarios del sistema
+**/usr/bin** = Comandos y programas ejecutables para todos los usuarios
+**/usr/lib** = Librerias necesarias para ejecutar binarios
+**/home** = Directorios personales de cada usuarion no-root
+**/root** = Directorio personal del usuario root
+**/tmp** = Archivos temporales del sistema, descarga de aplicaciones, scripts se limpia al reiniciar
+**/dev** = representacion de dispositivos Fisicos [hardaware]
+**/sbin** = Ejecutables del sistema y recuperacion, usados por root para administrar
+
+**Directorios delicados/especiales:** 
+
+**/procp** = Sistema de archivos virtual, expone informacion de procesos y kernel en tiempo real
+**/sys** = Hardaware del sistema, y control del hardware y del kernel
+
+***/etc configura, /usr ejecuta, /var registra, /dev conecta, /home guarda, /root manda, /proc revela.***
+
+## Variables de entorno
+son valores los cuales el sistema y progrmas usan para definir comportamientos, se guardan en memoria y afectan el comportamiento de SO
+
+1)**echo $NOMBRE_VARIABLE** = conocer el contenido de una variable
+2)**export VAIABLE=VALOR** = Creacion de una variable y asignacion de un valor
+3)**export VARIABLE=NUEVO_VALOR** = Reasignacion de un valor a una variable
+4)**unser VARIABLE** = Eliminacion de variable
+
+- **env** = Enlista las variables
+- **export** = Crreamos una variable
+- **echo** = contenido de una variable
+- **unset** = Eliminacion de una variable
+
+***Variables importantes para el entorno:***
+
+- **PATH** = Rutas donde se buscan los ejecutables
+- **HOME** = Directorio ***Home*** del usuario
+- **USER** = Nombre del usuario actual
+- **SHELL** = Shell actual en uso
+- **TERM** = Terminal actual en uso
+- **EDITOR** = Editor de texto predeterminado
+
+***Variables de entorno persisten***
+
+Son aquellas variables que no se borran cuando se reinicia elsistema. **las variables que defino con export solo estan hasta que la sesion este abierta**
+
+**¿Como hacer variables persistentes?**
+
+Para ello debemos saber que Shell estamos usando podemo ver lo con **echo $SHELL** (o llendo al fichero /etc/passwd y buscar nuestro usuario con la informacion) una vez con esto claro, para crear variables persistente debemos registrarlas en el archio correspondiente de nuestra shell en este caso ***.bashrc*** que es un archivo oculto
+
+1) Nano ~/bashrc
+2) export NOMBRE_VARIABLE CONTENIDO
+3) Guardamos las modificaciones con ctrl + 0, enter, ctrl + x
+4) Recargamos el archivo source ~/bashrc
+
+## Comandos de ayuda y soporte
